@@ -1,0 +1,72 @@
+
+
+schema {
+  query: Query
+}
+
+# This is just here to have a root query type
+# this is not functional
+type Query {
+  signalSearch(SignalQuery: SignalQuery): [Signal]!
+  echo(input: String)String!
+}
+
+type Signal { 
+    id:Int!
+    timestamp:String!
+    name:String!
+    vars:[Variable]
+}
+
+
+input SignalQuery { 
+    fromDateTime:String!
+    toDateTime:String! 
+    sortBy:SortType!
+    limit:Int!
+    signalIds:[Int]
+    entities:[String]
+    varCriterias:[VarCriteria]
+}
+
+enum SortType { 
+    TIMEDESC
+    TIMEASC
+    ENTITY
+}
+
+enum DataType {
+  BOOLEAN
+  STRING
+  FLOAT 
+  INTEGER
+} 
+
+enum Operator { 
+    GREATERTHAN
+    LESSTHAN
+    EQUALTO
+    NOTEQUAL
+}
+
+input VarCriteria { 
+    varId:Int!
+    operator:Operator!
+    dataType:DataType!
+    intValue:Int
+    floatValue:Float
+    stringValue:String
+    booleanValue:Boolean
+}
+
+
+type Variable {
+    id:Int! 
+    dataType:DataType! 
+    intValue:Int
+    floatValue:Float
+    stringValue:String
+    booleanValue:Boolean
+
+
+}

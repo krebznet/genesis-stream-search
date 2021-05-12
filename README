@@ -1,0 +1,25 @@
+# query schema for seacrh api
+query {
+  search {
+    id
+    timestamp
+    name
+    vars {
+      id
+      value {
+        ... on FloatType {
+          floatValue
+        }
+        ... on IntegerType {
+          integerValue
+        }
+        ... on StringType {
+          stringValue
+        }
+        ... on BoolType {
+          boolValue
+        }
+      }
+    }
+  }
+}

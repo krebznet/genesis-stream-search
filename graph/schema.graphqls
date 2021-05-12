@@ -1,0 +1,33 @@
+type Query {
+  search: [Signal]!
+}
+
+type Signal {
+  id: Int!
+  timestamp: String!
+  name: String!
+  vars: [Variable]!
+}
+
+type IntegerType {
+  integerValue: Int!
+}
+
+type FloatType {
+  floatValue: Float!
+}
+
+type StringType {
+  stringValue: String!
+}
+
+type BoolType {
+  boolValue: Boolean!
+}
+
+union FieldType = IntegerType | FloatType | StringType | BoolType
+
+type Variable {
+  id: Int!
+  value: FieldType!
+}
