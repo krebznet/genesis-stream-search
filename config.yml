@@ -1,0 +1,8 @@
+server:
+
+db:
+  user: "root" # the username of mongo
+  password: "123456" # the password of mongo
+  host: "localhost" # the host for mongo
+  port: "27017" # the port for mongo
+  name: "stream" # the mongo database name
